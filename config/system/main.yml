@@ -26,7 +26,6 @@
             name: "{{ item }}"
           loop:
             - en_US.UTF-8
-            - es_EC.UTF-8
           register: locale_gen
 
         - name: system - Set `en_US` as default locale
