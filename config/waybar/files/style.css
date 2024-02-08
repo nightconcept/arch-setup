@@ -1,0 +1,54 @@
+
+/* Unline other programs, here we only import named colors, not a configuration theme. If you change the theme, you must also change the color names to match those of the new theme. */
+@import "./themes/catppuccin-mocha.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: monospace;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: @mantle;
+    color: @subtext1;
+}
+
+/* .topbar { */
+/*     border-bottom: 1px solid; */
+/*     border-color: @surface0; */
+/* } */
+/* .bottombar { */
+/*     border-top: 1px solid; */
+/*     border-color: @surface0; */
+/* } */
+
+
+/* topbar modules*/
+
+#clock,
+#workspaces {
+    padding: 0 0 5px 0;
+}
+#clock {
+    padding-left: 12px;
+}
+#workspaces button {
+    color: @surface2;
+}
+#workspaces button.active {
+    color: @green;
+    font-weight: bold;
+}
+
+
+/* bottom bar modules */
+
+#battery,
+#cpu,
+#memory,
+#disk {
+    padding: 8px 0 7px 0;
+}
+

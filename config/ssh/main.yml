@@ -1,0 +1,130 @@
+- tags: ssh
+  block:
+    - name: ssh - Install packages
+      become: true
+      community.general.pacman:
+        state: latest
+        name:
+          - openssh   # SSH protocol implementation for remote login, command execution and file transfer
+
+
+    - name: SSH client side configurations (connect from this machine to other machines)
+      block:
+        - name: ssh - Create directory
+          ansible.builtin.file:
+            path: "{{ home }}/.ssh"
+            owner: "{{ user }}"
+            group: "{{ user }}"
+            mode: '700'
+            state: directory
+
+        - name: ssh - Copy ssh keys
+          ansible.builtin.template:
+            src: "files/{{ item.name }}"
+            dest: "{{ home }}/.ssh/{{ item.name }}"
+            owner: "{{ user }}"
+            group: "{{ user }}"
+            mode: "{{ item.mode }}"
+          with_items:
+            - { name: "{{ ssh_key_name }}", mode: '600' }
+            - { name: "{{ ssh_key_name }}.pub", mode: '644' }
+
+        - name: ssh - Create links
+          ansible.builtin.file:
+            src: "{{ repo_dir }}/config/ssh/files/{{ item.name }}"
+            path: "{{ home }}/.ssh/{{ item.name }}"
+            owner: "{{ user }}"
+            group: "{{ user }}"
+            mode: '600'
+            state: "link"
+          loop:
+            - { name: "config" }
+
+
+    - name: SSH server side configurations (connect from other machines to this machine)
+      block:
+        - name: ssh - Add public key to authorized keys
+          # Let my other machines access this machine (single pair of keys
+          # across all machines).
+          ansible.posix.authorized_key:
+            user: "{{ user }}"
+            # Must pass the content of the key, not the key path.
+            key: "{{ lookup('file', '{{ home }}/.ssh/{{ ssh_key_name }}.pub') }}"
+
+        - name: ssh - Start and enable ssh daemon
+          become: true
+          ansible.builtin.systemd_service:
+            name: "sshd.service"
+            state: "started"
+            enabled: true
+
+        - name: ssh - Disable password authentication for the root user
+          # Hackers will always try to hack a system with root user, it's 
+          # harder if they don't know the user and the password.
+          become: true
+          ansible.builtin.lineinfile:
+            dest: /etc/ssh/sshd_config
+            regexp: "^#PermitRootLogin"
+            line: "PermitRootLogin prohibit-password" 
+
+        - name: ssh - Disable password authentication for all users (if instructed)
+          # If ssh keys are already configured in any other machine you can
+          # disable password access for major security. Sometimes it can be 
+          # useful to access with a password though.
+          ansible.builtin.lineinfile:
+            dest: /etc/ssh/sshd_config
+            regexp: "^#PasswordAuthentication"
+            line: "PasswordAuthentication no" 
+          when: ssh_disable_password_authentication
+
+
+    - name: ssh-agent setup
+      # The private key is protected with a passphrase for major security.
+      # Some tasks of this playbook will clone private repositories, so we 
+      # need to "pre-open" the key by adding its passphrase to the ssh-agent,
+      # otherwise the cloning will fail.
+      # Add the tags of all tasks that clone a private repository to this tasks.
+      tags: fonts, wallpapers
+      block:
+        - name: ssh - Start and enable ssh-agent (as a user service) with systemd
+          # https://wiki.archlinux.org/title/SSH_keys#Start_ssh-agent_with_systemd_user
+          # Requires `SSH_AUTH_LOCK` environment variable (see zsh config)
+          environment:
+            # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_service_module.html#parameter-scope
+            XDG_RUNTIME_DIR: "{{ lookup('env', 'XDG_RUNTIME_DIR') }}"
+          # User services do not require super user privileges.
+          ansible.builtin.systemd_service:
+            name: "ssh-agent.service"
+            state: "started"
+            enabled: true
+            scope: "user"
+
+        - name: ssh - Add the private key passphrase to the ssh-agent
+          # The `ssh-add` command does not accept the passphrase as an 
+          # argument, the command is meant to be used interactively.
+          #
+          # In order to add the passphrase we need to use the `expect`
+          # module, which is based on the `expect` command (a tool for 
+          # automating interactive applications).
+          #
+          # The `expect` module requires the `pexpect` package to be 
+          # installed in order to evaluate regex patterns in the promped 
+          # questions.
+          block:
+            - name: ssh - Install `pexpect`
+              become: true
+              community.general.pacman:
+                state: latest
+                name:
+                  - python-pexpect    # For controlling and automating applications
+
+            - name: ssh - Add the private key passphrase to the ssh-agent
+              ansible.builtin.expect:
+                command: "ssh-add {{ home }}/.ssh/{{ ssh_key_name }}"
+                responses:
+                  # This is the only question asked, use a regular expression 
+                  # to match it.
+                  '(?i)Enter passphrase (.*):': "{{ ssh_key_passphrase }}"
+              # Do not show passphrase in logs
+              no_log: true
+

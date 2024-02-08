@@ -1,0 +1,47 @@
+// https://github.com/Alexays/Waybar/wiki/Configuration#bar-config
+[
+    { 
+        "name": "topbar", 
+        "height": 44,
+        "modules-left": ["clock"],
+        "modules-center": ["hyprland/workspaces"],
+        "mode": "overlay",  // much faster (no redraw of all other windows)
+        "clock": {
+            "format": "{:%A   %b %d   %H:%M}"
+        },
+        "hyprland/workspaces": {
+            "format": "{name}",
+        },
+    },
+    {
+        "name": "bottombar", 
+        "position": "bottom",
+        "height": 44,
+        "modules-center": ["battery", "cpu", "memory", "disk#root", "disk#home"],
+        "mode": "overlay",  // much faster (no redraw of all other windows)
+        "spacing": 60,
+        "battery": {
+            "interval": 60,
+            "format": "bat {capacity}%",
+        },
+        "cpu": {
+            "interval": 1,  // much quicker refresh rate (only there for a few seconds)
+            "format": "cpu {usage}%",
+        },
+        "memory": {
+            "interval": 5,
+            "format": "mem {used}"
+        },
+        "disk#root": {
+            "interval": 30,
+            "format": "/ {free}",
+            "path": "/",
+        },
+        "disk#home": {
+            "interval": 30,
+            "format": "~ {free}",
+            "path": "/home",
+        },
+    }
+] 
+
