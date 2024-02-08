@@ -58,3 +58,24 @@ is_intel: "{{ 'GenuineIntel' in ansible_processor }}"
 
 # ------------------------------------------------------------------------------
 #
+
+base_fonts:
+    - adobe-source-code-pro-fonts
+    - cantarell-fonts
+    - gsfonts
+    - noto-fonts
+    - terminus-font
+    - tex-gyre-fonts
+    - ttc-iosevka
+    - ttc-iosevka-aile
+    - ttc-iosevka-ss08
+    - ttf-caladea
+    - ttf-carlito
+    - ttf-dejavu
+    - ttf-droid
+    - ttf-fira-mono
+    - ttf-ibm-plex
+    - ttf-inconsolata
+    - ttf-liberation
+    - ttf-opensans
+    - ttf-ubuntu-font-family
