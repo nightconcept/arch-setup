@@ -1,0 +1,13 @@
+- tags: always
+  block:
+
+    - name: pre-tasks - Check linux distribution
+      ansible.builtin.fail:
+        msg: This playbook can only be executed on Archlinux distributions
+      when: ansible_distribution != "Archlinux"
+
+    - name: pre-tasks - Make sure all packages are up to date
+      become: true
+      community.general.pacman:
+        update_cache: true
+        upgrade: true

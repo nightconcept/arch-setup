@@ -46,5 +46,6 @@
     # wezterm
     # pyenv
   roles:
+    - { role: pre_}
     - { role: fonts, tags: ['fonts'] }
     - { role: x, tags: ['x'] }

@@ -68,6 +68,7 @@
           - ethtool             # Utility for controlling network drivers and hardware
           - traceroute          # Tracks the route taken by packets over an IP network
           - wget                # Network utility to retrieve files from the Web (used by Neovim to download files on the internet when pressing `gf`)
+          - curl                # Network utility to retrieve files from the Web
           - speedtest-cli       # Command line interface for testing internet bandwidth using speedtest.net
           #
           # ------------------------------------------------------------------------
