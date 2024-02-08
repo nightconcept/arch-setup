@@ -13,8 +13,6 @@
           - eza                 # Modern replacement for ls, community fork of exa (`ls` alternative)
           - fd                  # Simple, fast and user-friendly alternative to find (`find` alternative)
           - fzf                 # Command-line fuzzy finder
-          - ripgrep             # A search tool that combines the usability of ag with the raw speed of grep (`grep` alternative)
-          - ripgrep-all         # rga: ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc.
           - rsync               # A fast and versatile file copying tool for remote and local files (`cp` alternative)
           - trash-cli           # Command line trashcan (recycle bin) interface (`rm` alternative)
           - zoxide              # A smarter cd command for your terminal (`cd` alternative)
@@ -34,19 +32,15 @@
           # ------------------------------------------------------------------------
           #
           # System monitor utilities:
-          # - lm_sensors          # Collection of user space tools for general SMBus access and hardware monitoring
-          # - lsof                # Lists open files for running Unix processes
           - bottom              # A graphical process/system monitor (`htop` alternative)
           - hwinfo              # Hardware detection tool from openSUSE
-          - inxi                # Full featured CLI system information tool
           - neofetch            # A CLI system information tool written in BASH that supports displaying images.
           #
           # ------------------------------------------------------------------------
           #
           # Disk utilities:
           - duf                 # Disk Usage/Free Utility (`df` alternative)
-          - ncdu                # Disk usage analyzer with an ncurses interface (`du` alternative)
-          - wipe                # Secure file wiping utility
+          - ncdu                # Disk usage analyzer like WinDirStat (`du` alternative)
           #
           # ------------------------------------------------------------------------
           #
@@ -73,15 +67,12 @@
           - bandwhich           # Terminal bandwidth utilization tool
           - ethtool             # Utility for controlling network drivers and hardware
           - traceroute          # Tracks the route taken by packets over an IP network
-          - wavemon             # Ncurses-based monitoring application for wireless network devices
           - wget                # Network utility to retrieve files from the Web (used by Neovim to download files on the internet when pressing `gf`)
           - speedtest-cli       # Command line interface for testing internet bandwidth using speedtest.net
           #
           # ------------------------------------------------------------------------
           #
           # Firewalls and ports:
-          # - opensnitch          # A GNU/Linux application firewall
-          # - ufw                 # Uncomplicated and easy to use CLI tool for managing a netfilter firewall
           - nmap                # Utility for network discovery and security auditing (great to check open ports)
           #
           # ------------------------------------------------------------------------
@@ -123,25 +114,12 @@
           # ------------------------------------------------------------------------
           #
           # Office:
-          - inkscape            # Professional vector graphics editor
-          - kicad               # Electronic schematic and printed circuit board (PCB) design tools
-          - kicad-library       # KiCad symbol, footprint and template libraries
           - libreoffice-fresh   # LibreOffice branch which contains new features and program enhancements
           #
           # ------------------------------------------------------------------------
           #
-          # Scanning:
-          - hplip               # Drivers for HP DeskJet, OfficeJet, Photosmart, Business Inkjet and some LaserJet
-          - xsane               # A GTK-based X11 frontend for SANE and plugin for Gimp.
-          #
-          # ------------------------------------------------------------------------
-          #
           # Other utils:
-          - figlet              # A program for making large letters out of ordinary text
-          - pastel              # A command-line tool to generate, analyze, convert and manipulate colors
-          - translate-shell     # A command-line interface and interactive shell for Google Translate
-          - hyperfine           # A command-line benchmarking tool
-          # - stow                # Manage installation of multiple software in the same directory tree
+          - stow                # Manage installation of multiple software in the same directory tree
           #
           # ------------------------------------------------------------------------
           #
