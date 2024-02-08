@@ -6,7 +6,7 @@
     - import_tasks: config/system/main.yml
 
     - import_tasks: config/pacman/main.yml
-    - import_tasks: config/paru/main.yml
+    - import_tasks: config/yay/main.yml
 
     - import_tasks: config/no_config/main.yml       # must go after pacman and paru
 
