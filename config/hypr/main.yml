@@ -35,7 +35,7 @@
               - name: hypr - Install hyprpicker
                 when: which_hyprpicker.rc != 0
                 # A wlroots-compatible Wayland color picker that does not suck
-                ansible.builtin.shell: 'paru -S --skipreview hyprpicker'
+                ansible.builtin.shell: 'yay -S --skipreview hyprpicker'
 
           - name: wlr-randr
             block:
@@ -47,7 +47,7 @@
               - name: hypr - Install wlr-randr
                 when: which_wlrrandr.rc != 0
                 # Utility to manage outputs of a Wayland compositor
-                ansible.builtin.shell: 'paru -S --skipreview wlr-randr'
+                ansible.builtin.shell: 'yay -S --skipreview wlr-randr'
 
 
     - name: hypr - Link the whole directory
