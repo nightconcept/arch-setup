@@ -28,5 +28,5 @@
         # `-s` installs dependencies automatilly
         # `-i` install the package after successfully building it
         # `--noconfirm` answers `yes` to all prompts without asking questions
-        ansible.builtin.shell: "cd /tmp/yay && makepkg -si --noconfirm"
+        ansible.builtin.shell: "cd {{ home }}/git/yay && makepkg -si --noconfirm"
 
