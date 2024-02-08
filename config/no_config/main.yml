@@ -91,7 +91,7 @@
           # ------------------------------------------------------------------------
           #
           # Fonts:
-          - noto-fonts-emoji    # Google Noto emoji fonts
+          # - noto-fonts-emoji    # Google Noto emoji fonts
           #
           # ------------------------------------------------------------------------
           #
@@ -109,7 +109,6 @@
           # Books:
           - evince              # Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)
           - foliate             # A simple and modern GTK eBook reader
-          - mdbook              # Create book from markdown files, like Gitbook but implemented in Rust
           #
           # ------------------------------------------------------------------------
           #
