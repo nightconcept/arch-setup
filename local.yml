@@ -44,3 +44,5 @@
     # vscode
     # wezterm
     # pyenv
+  roles:
+    - { role: x, tags: ['x'] }
