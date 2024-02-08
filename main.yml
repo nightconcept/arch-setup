@@ -1,5 +1,5 @@
 # must be `all` and not `localhost` to be able to get the {{inventory_hostname}} value
-- hosts: all
+- hosts: localhost
   become: yes
   # tasks:
 
