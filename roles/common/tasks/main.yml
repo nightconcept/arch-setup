@@ -18,6 +18,10 @@
           - zoxide              # A smarter cd command for your terminal (`cd` alternative)
           #
           # ------------------------------------------------------------------------
+          # Core utilities:
+          - xorg                 # X display server
+          #
+          # ------------------------------------------------------------------------
           #
           # Ansible:
           - sshpass             # Fool ssh into accepting an interactive password non-interactively (required by Ansible to run playbooks on remote managed nodes, in case you ever use this computer to run the `arch-base` playbook on another computer)
@@ -25,8 +29,6 @@
           # ------------------------------------------------------------------------
           #
           # Help utilities:
-          - man-db              # A utility for reading man pages 
-          - man-pages           # Linux man pages
           - tldr                # Command line client for tldr, a collection of simplified and community-driven man pages
           #
           # ------------------------------------------------------------------------
@@ -124,8 +126,8 @@
           # ------------------------------------------------------------------------
           #
           # Programming:
-          - hyperfine           # A command-line benchmarking tool
-          - jq                  # Command-line JSON processor
+          #- hyperfine           # A command-line benchmarking tool
+          #- jq                  # Command-line JSON processor
           # - go
           # - nodejs
           # - npm
