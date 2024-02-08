@@ -79,3 +79,15 @@ base_fonts:
     - ttf-liberation
     - ttf-opensans
     - ttf-ubuntu-font-family
+
+aur_fonts:
+    - ttf-bitstream-charter
+    - ttf-cooper-hewitt
+    - ttf-courier-prime
+    - ttf-heuristica
+    - ttf-merriweather
+    - ttf-merriweather-sans
+    - ttf-mplus-git
+    - ttf-oswald
+    - ttf-quintessential
+    - ttf-signika
