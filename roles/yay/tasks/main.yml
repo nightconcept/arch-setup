@@ -19,14 +19,14 @@
       when: which_yay.rc != 0
       block: 
 
-      - name: yay - Clone the `yay` repository
-        ansible.builtin.git:
-          repo: https://aur.archlinux.org/yay.git
-          dest: "/tmp/yay/"
+    - name: yay - Clone the `yay` repository
+      ansible.builtin.git:
+        repo: https://aur.archlinux.org/yay.git
+        dest: "{{ home }}/git/yay"
 
-      - name: yay - Build
-        # `-s` installs dependencies automatilly
-        # `-i` install the package after successfully building it
-        # `--noconfirm` answers `yes` to all prompts without asking questions
-        ansible.builtin.shell: "cd /tmp/yay && makepkg -si --noconfirm"
+    - name: yay - Build
+      # `-s` installs dependencies automatilly
+      # `-i` install the package after successfully building it
+      # `--noconfirm` answers `yes` to all prompts without asking questions
+      ansible.builtin.shell: "cd /tmp/yay && makepkg -si --noconfirm"
 
