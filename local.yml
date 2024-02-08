@@ -45,4 +45,5 @@
     # wezterm
     # pyenv
   roles:
+    - { role: fonts, tags: ['fonts'] }
     - { role: x, tags: ['x'] }
