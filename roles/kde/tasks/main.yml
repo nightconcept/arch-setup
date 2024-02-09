@@ -9,4 +9,5 @@
           - kde-applications-meta
           - sddm-kcm
           - audacious
+          - plasmay-wayland-session
         state: present
