@@ -8,17 +8,15 @@
         name:
           - dunst     # Customizable and lightweight notification-daemon
 
-
     - name: dunst - Link the whole directory
       # link the whole directory, there is nothing sensible here
       ansible.builtin.file:
-        src: "{{ repo_dir }}/config/dunst/files"
+        src: "{{ repo_dir }}/roles/dunst/files"
         path: "{{ home }}/.config/dunst"
         owner: "{{ user }}"
         group: "{{ user }}"
         mode: "0700"
         state: "link"
-
 
     - name: dunst - Enable user service
       # https://wiki.archlinux.org/title/SSH_keys#Start_ssh-agent_with_systemd_user
