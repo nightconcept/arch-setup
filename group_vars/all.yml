@@ -3,7 +3,6 @@
 # Preferences:
 #   These are the default values for all hosts. To apply different preferences between hosts use host preferences files (`host_vars` directory).
 
-theme: "rose-pine"
 timezone: "America/Los_Angeles"
 #   (password authentication is disabled by default for the root user. You can opt to disable password authentication for all other users as well)
 ssh_disable_password_authentication: false
@@ -58,36 +57,21 @@ is_intel: "{{ 'GenuineIntel' in ansible_processor }}"
 
 # ------------------------------------------------------------------------------
 #
-
 base_fonts:
     - adobe-source-code-pro-fonts
-    - cantarell-fonts
-    - gsfonts
     - noto-fonts
-    - terminus-font
-    - tex-gyre-fonts
-    - ttc-iosevka
-    - ttc-iosevka-aile
-    - ttc-iosevka-ss08
-    - ttf-caladea
-    - ttf-carlito
-    - ttf-dejavu
+    - noto-fonts-emoji
     - ttf-droid
+    - ttf-fira-code
     - ttf-fira-mono
-    - ttf-ibm-plex
+    - ttf-fira-sans
     - ttf-inconsolata
-    - ttf-liberation
     - ttf-opensans
     - ttf-ubuntu-font-family
 
 aur_fonts:
-    - ttf-bitstream-charter
-    - ttf-cooper-hewitt
-    - ttf-courier-prime
-    - ttf-heuristica
-    - ttf-merriweather
-    - ttf-merriweather-sans
-    - ttf-mplus-git
-    - ttf-oswald
-    - ttf-quintessential
-    - ttf-signika
+
+install_wayland: true
+install_x: true
+
+install_kde_plasma: true

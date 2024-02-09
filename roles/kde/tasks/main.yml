@@ -1,13 +1,21 @@
 - tags: kde
   block:
 
-    - name: install KDE and KDE apps
+    - name: kde - install Plasma and Plasma applications
       become: true
       community.general.pacman:
         name: 
           - plasma-meta
           - kde-applications-meta
           - sddm-kcm
-          - audacious
-          - plasma-wayland-session
+        state: present
+
+    - name: kde - install helpful Plasma add-ons
+      # https://community.kde.org/Distributions/Packaging_Recommendations
+      community.general.pacman:
+        name: 
+          - ffmpegthumbs
+          - dolphin-plugins
+          - kdegraphics-thumbnailers
+          - kdenetwork-filesharing
         state: present
