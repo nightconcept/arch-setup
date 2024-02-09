@@ -1,0 +1,9 @@
+- tags: x
+  block:
+
+    - name: x - Install x
+      become: true
+      community.general.pacman:
+        state: latest
+          - x
+      when: install_x
