@@ -1,0 +1,12 @@
+- tags: kde
+  block:
+
+  - name: install KDE and KDE apps
+    community.general.pacman:
+    name: 
+      - plasma-meta
+      - kde-applications-meta
+      - sddm-kcm
+      - clementine
+      - audacious
+    state: present
