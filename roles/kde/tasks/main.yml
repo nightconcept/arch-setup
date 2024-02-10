@@ -45,6 +45,7 @@
         state: present
 
     - name: desktop - Enable service sddm
+      become: true
       systemd:
         name: sddm.service
         enabled: true
