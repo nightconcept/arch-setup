@@ -44,11 +44,10 @@
           - kdenetwork-filesharing
         state: present
 
-    block:
-      - name: desktop - Enable service sddm
-          systemd:
-            name: sddm.service
-            enabled: true
+    - name: desktop - Enable service sddm
+        systemd:
+          name: sddm.service
+          enabled: true
 
     # configure SDDM to breeze as default theme
 
