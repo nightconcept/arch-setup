@@ -3,6 +3,7 @@
   become: true
 
     - name: desktop - install Plasma desktop and SDDM
+      become: true
       community.general.pacman:
         name: 
           #- plasma-meta
@@ -11,9 +12,11 @@
           - sddm-kcm
         state: present
       
-      
+
     - name: desktop - install essential KDE applications
+      become: true
       community.general.pacman:
+      # https://community.kde.org/Distributions/Packaging_Recommendations
         name:
           - ark
           - dolphin
@@ -34,12 +37,6 @@
           - plasma-nm
           - plasma-pa
           - bluedevil
-
-
-    - name: desktop - install helpful Plasma add-ons
-      # https://community.kde.org/Distributions/Packaging_Recommendations
-      community.general.pacman:
-        name: 
           - ffmpegthumbs
           - dolphin-plugins
           - kdegraphics-thumbnailers
