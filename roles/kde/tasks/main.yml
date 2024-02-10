@@ -44,10 +44,9 @@
           - kdenetwork-filesharing
         state: present
 
-    #  display manager so it starts at startup
-    # https://wiki.archlinux.org/title/Display_manager#Loading_the_display_manager
+
     - name: desktop - Enable service sddm
-        ansible.builtin.systemd_service:
+        systemd:
           name: sddm.service
           enabled: true
 
