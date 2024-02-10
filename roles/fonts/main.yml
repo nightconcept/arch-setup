@@ -2,7 +2,7 @@
   block:
 
     - name: Install base fonts
-      pacman:
+      community.general.pacman:
         name: "{{ base_fonts }}"
         state: present
 
