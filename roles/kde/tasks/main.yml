@@ -1,8 +1,8 @@
 - tags: desktop
   block:
+  become: true
 
     - name: desktop - install Plasma desktop and SDDM
-      become: true
       community.general.pacman:
         name: 
           #- plasma-meta
@@ -10,6 +10,7 @@
           - plasma-desktop
           - sddm-kcm
         state: present
+      
       
     - name: desktop - install essential KDE applications
       community.general.pacman:
