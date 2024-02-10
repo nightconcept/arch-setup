@@ -31,3 +31,10 @@
         chdir: '~{{ user }}'
         creates: '~{{ user }}/.oh-my-zsh'
 
+    - name: zsh - Install PowerLevel10K
+      ansible.builtin.git:
+        repo: https://github.com/romkatv/powerlevel10k.git
+        dest: "/home/{{ user }}/.oh-my-zsh/custom/themes/powerlevel10k"
+        depth: 1
+
+
