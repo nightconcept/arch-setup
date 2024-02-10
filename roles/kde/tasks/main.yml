@@ -1,6 +1,5 @@
 - tags: desktop
   block:
-  become: true
 
     - name: desktop - install Plasma desktop and SDDM
       become: true
@@ -15,6 +14,7 @@
 
     - name: desktop - install essential KDE applications
       become: true
+      become_user: root
       community.general.pacman:
       # https://community.kde.org/Distributions/Packaging_Recommendations
         name:
