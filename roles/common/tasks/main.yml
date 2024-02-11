@@ -80,5 +80,6 @@
 
           # Other utils:
           - stow                # Manage installation of multiple software in the same directory tree
+          - fontconfig          # library for configuring and customizing font access
 
 

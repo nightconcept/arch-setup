@@ -9,6 +9,15 @@ ssh_disable_password_authentication: false
 
 # ------------------------------------------------------------------------------
 
+# Calculated variables (no need to touch):
+#   (lookup env will get the given environment variable from the controller machine. This is why we must execute this script via `ansible-pull` and while logged in as the user for which we want to generate the config files. For more info see: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/env_lookup.html#ansible-collections-ansible-builtin-env-lookup)
+home: "{{ lookup('env', 'HOME') }}"
+user: "{{ lookup('env', 'USER') }}"
+#   (required for link creation)
+repo_dir: "{{ ansible_facts.env.PWD }}"
+#   (required for processor firmware updates)
+is_intel: "{{ 'GenuineIntel' in ansible_processor }}"
+
 # Encrypted variables:
 #   You can change these variables here if required.
 
@@ -36,27 +45,8 @@ spotify_password: !vault |
           3336373863393838340a623037616335346265376333663062356663663064653163653733383461
           65373734663931633361313638306431633234333734303663643935383663306432
 
-# ------------------------------------------------------------------------------
+# Configuration variables
 
-# Rarely changed:
-
-#   (in case you ever use another key type)
-ssh_key_name: "id_ed25519"
-
-# ------------------------------------------------------------------------------
-
-# Calculated variables (no need to touch):
-
-#   (lookup env will get the given environment variable from the controller machine. This is why we must execute this script via `ansible-pull` and while logged in as the user for which we want to generate the config files. For more info see: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/env_lookup.html#ansible-collections-ansible-builtin-env-lookup)
-home: "{{ lookup('env', 'HOME') }}"
-user: "{{ lookup('env', 'USER') }}"
-#   (required for link creation)
-repo_dir: "{{ ansible_facts.env.PWD }}"
-#   (required for processor firmware updates)
-is_intel: "{{ 'GenuineIntel' in ansible_processor }}"
-
-# ------------------------------------------------------------------------------
-#
 base_fonts:
     - adobe-source-code-pro-fonts
     - noto-fonts
@@ -68,10 +58,3 @@ base_fonts:
     - ttf-inconsolata
     - ttf-opensans
     - ttf-ubuntu-font-family
-
-aur_fonts:
-
-install_wayland: true
-install_x: true
-
-install_kde_plasma: true

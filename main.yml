@@ -21,7 +21,7 @@
     - wayland
     - bluetooth
     - fonts
-    # dotfiles
+    - stow
 
     # applications
     - mpv
